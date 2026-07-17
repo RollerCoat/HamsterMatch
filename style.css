@@ -1,3 +1,5 @@
+/* Allgemein */
+
 body {
     background-color: #d2d9ff;
     font-family: "Elms Sans", sans-serif;
@@ -11,10 +13,23 @@ body {
     background-image: linear-gradient(to bottom, #dcdcea, #b8afc0);
 }
 
+button {
+    background-color: #00000000;
+    border: none;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/* Navigationsleiste */
+
 #top_nav {
     display: flex;
     justify-content: space-between;
-    width: 900px;
+    width: 45vw;
     align-items: center;
     font-weight: 500;
 }
@@ -33,10 +48,12 @@ body {
     justify-content: center;
 }
 
+/* Karte und Hauptteil des Bildschirms */
+
 #main {
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 5vh;
 }
 
 #card {
@@ -45,29 +62,32 @@ body {
     font-weight: 300;
     font-style: normal;
 
+    flex-direction: column;
+
     background-image: radial-gradient(circle, #55368e, #48528e);
     color: #ffffff;
+
     display: flex;
-    justify-content: center;
-    width: 450px;
+    align-items: center;
+
+    width: 25vw;
     border: 4px solid #05133c78;
     padding: 10px;
     padding-top: 60px;
     padding-bottom: 40px;
     font-size: 18px;
-    border-radius: 10px;
+    border-radius: 25px;
 
     transition: scale 0.2s ease;
 }
 
 #card:hover {
     scale: 1.04;
-    cursor: pointer;
 }
 
 #card_profile_picture {
-    width: 300px;
-    height: 300px;
+    width: 30vh;
+    height: 30vh;
     border: 4px solid #ffffff60;
 }
 
@@ -83,10 +103,13 @@ body {
 
 #like_dislike_card_info {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 6vh;
 }
 #match_buttons {
     display: flex;
     justify-content: space-between;
     font-weight: 500;
+    width: 18vw;
 }
