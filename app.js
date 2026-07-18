@@ -7,15 +7,26 @@ const dislikings_object = document.getElementById("dislikings");
 const scroll_button = document.getElementById("next_hamster");
 const like_button = document.getElementById("like");
 const dislike_button = document.getElementById("dislike");
-const super_like_button = document.getElementById("superlike");
+
+const likes_counter = document.getElementById("likes");
+
+const overlay = document.getElementById('overlay-effect');
+
+const LIKED = 1
+const DISLIKED = -1
+const NEUTRAL = 0
 
 class Hamster {
-    constructor(name, age, picture, likings, dislikings) {
+    constructor(name, age, picture, likings, dislikings, likes, did_i_like, likes_you) {
         this.name = name;
         this.age = age;
         this.picture = picture;
         this.likings = likings;
         this.dislikings = dislikings;
+
+        this.likes = likes;
+        this.likes_you = likes_you;
+        this.did_i_like = 0;
     }
 
     put_data_on_screen() {
@@ -27,62 +38,109 @@ class Hamster {
 
         picture_object.src = this.picture;
     }
+
+    like() {
+        if ( this.did_i_like === DISLIKED ) {
+
+            update_likes(this, 2); // Dislike => 0 => Like: +2
+            this.did_i_like = LIKED;
+        }
+        
+        else if ( this.did_i_like === NEUTRAL ) {
+
+            update_likes(this, 1);
+            this.did_i_like = LIKED;
+        }
+
+        else {
+            update_likes(this, -1);
+            this.did_i_like = NEUTRAL;
+        }
+    }
+
+    dislike() {
+        if ( this.did_i_like === LIKED ) {
+
+            update_likes(this, -2);
+            this.did_i_like = DISLIKED;
+        }
+        
+        else if ( this.did_i_like === NEUTRAL ) {
+
+            update_likes(this, -1);
+            this.did_i_like = DISLIKED;
+        }
+
+        else {
+            update_likes(this, 1);
+            this.did_i_like = NEUTRAL;
+        }
+    }
 };
 
 let hamsters_in_town = [
-    {
-        name: "Herbert",
-        age: 3,
-        picture: "assets/herbert.png",
-        likings: ["Käse", "Käserolle", "Gouda"],
-        dislikings: ["Nils der Hamster"],
-        likes: 0,
-        dislikes: 0
-    },
-    {
-        name: "Nils",
-        age: 4,
-        picture: "assets/nils.png",
-        likings: ["Videospiele", "Rennen"],
-        dislikings: ["Lernen", "Schule"],
-        likes: 0,
-        dislikes: 0
-    },
-    {
-        name: "Gertrud",
-        age: 2,
-        picture: "assets/gertrud.png",
-        likings: ["Essen", "Messer", "Waffen"],
-        dislikings: ["Laufen", "Sport"],
-        likes: 0,
-        dislikes: 0
-    }
+    new Hamster(
+        "Herbert", // Name
+        3, // Alter
+        "assets/herbert.png", // Bild
+        ["Käse", "Käserolle", "Gouda"], // Mag er
+        ["Nils der Hamster"], // Mag er nicht
+        0, // Likes
+        0, // 1: gelikt 0: nicht -1: gedislikt
+        Boolean(Math.round(Math.random())) // Mag er dich?
+    ),
+    new Hamster(
+        "Nils", // Name
+        4, // Alter
+        "assets/nils.png", // Bild
+        ["Videospiele", "Nüsse"], // Mag er
+        ["Schule"], // Mag er nicht
+        0, // Likes
+        0, // 1: gelikt 0: nicht -1: gedislikt
+        Boolean(Math.round(Math.random())) // Mag er dich?
+    ),
+    new Hamster(
+        "Gertrud", // Name
+        2, // Alter
+        "assets/gertrud.png", // Bild
+        ["Essen", "Messer"], // Mag er
+        ["Laufen", "Sport", "Hamsterräder"], // Mag er nicht
+        0, // Likes
+        0, // 1: gelikt 0: nicht -1: gedislikt
+        Boolean(Math.round(Math.random())) // Mag er dich?
+    )
 ];
 
+function update_likes(hamster, likes) {
+    hamster.likes += likes;
+}
+
 hamster_iteration = Math.floor( Math.random() * hamsters_in_town.length );
-
-function new_hamster() {
-    let hamster_on_screen = new Hamster(
-        hamsters_in_town[hamster_iteration].name, // Name
-        hamsters_in_town[hamster_iteration].age, // Alter
-        hamsters_in_town[hamster_iteration].picture, // Bild
-        hamsters_in_town[hamster_iteration].likings, // Mag ich
-        hamsters_in_town[hamster_iteration].dislikings, // Mag ich nicht
-    );
-
-    hamster_on_screen.put_data_on_screen();
-};
-
-new_hamster();
+hamsters_in_town[hamster_iteration].put_data_on_screen();
 
 scroll_button.addEventListener('click', () => {
     hamster_iteration = (( hamster_iteration + 1 ) % hamsters_in_town.length);
-    new_hamster();
+    hamsters_in_town[hamster_iteration].put_data_on_screen();
+
+    likes_counter.textContent = hamsters_in_town[hamster_iteration].likes;
 })
 
-/*
 like_button.addEventListener('click', () => {
+    hamsters_in_town[hamster_iteration].like();
 
-})
+    if (hamsters_in_town[hamster_iteration].likes_you 
+        && 
+        hamsters_in_town[hamster_iteration].did_i_like === 1) {
 
-*/
+        overlay.classList.remove('active');
+        void overlay.offsetWidth;
+        overlay.classList.add('active');
+    }
+
+    likes_counter.textContent = hamsters_in_town[hamster_iteration].likes;
+});
+
+dislike_button.addEventListener('click', () => {
+    hamsters_in_town[hamster_iteration].dislike();
+    likes_counter.textContent = hamsters_in_town[hamster_iteration].likes;
+});
