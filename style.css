@@ -10,7 +10,7 @@ body {
     padding: 0;
     height: 100vh;
 
-    background-image: linear-gradient(to bottom, #dcdcea, #b8afc0);
+    background-image: linear-gradient(to bottom, #dcdcea, #ceb2e7);
 }
 
 button {
@@ -22,6 +22,7 @@ button {
 
 button:hover {
     cursor: pointer;
+    text-decoration: underline;
 }
 
 /* Navigationsleiste */
@@ -64,7 +65,7 @@ button:hover {
 
     flex-direction: column;
 
-    background-image: radial-gradient(circle, #55368e, #48528e);
+    background-image: radial-gradient(circle, #6f3cce, #2f4c65);
     color: #ffffff;
 
     display: flex;
@@ -79,10 +80,12 @@ button:hover {
     border-radius: 25px;
 
     transition: scale 0.2s ease;
+
+    margin-bottom: 5vh;
 }
 
 #card:hover {
-    scale: 1.04;
+    scale: 1.01;
 }
 
 #card_profile_picture {
@@ -107,9 +110,35 @@ button:hover {
     flex-direction: column;
     margin-bottom: 6vh;
 }
+
 #match_buttons {
     display: flex;
     justify-content: space-between;
     font-weight: 500;
     width: 18vw;
+}
+
+#next_hamster_container {
+    display: flex;
+    justify-content: center;
+}
+
+#next_hamster {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 12vw;
+    height: 4vh;
+    background-color: #6f3cce;
+    padding: 10px;
+
+    border: 4px solid #05133c78;
+    border-radius: 25px;
+
+    transition: scale 0.2s ease;
+}
+
+#next_hamster:hover {
+    scale: 1.2;
 }
