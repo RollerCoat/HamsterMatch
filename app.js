@@ -108,7 +108,116 @@ let hamsters_in_town = [
         0, // Likes
         0, // 1: gelikt 0: nicht -1: gedislikt
         Boolean(Math.round(Math.random())) // Mag er dich?
-    )
+    ),
+    new Hamster(
+        "Bruno",
+        5,
+        "assets/bruno.png",
+        ["Karotten", "Schlafen", "Holzhäuser"],
+        ["Staubsauger", "Regen"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Frieda",
+        1,
+        "assets/frieda.png",
+        ["Sonnenblumenkerne", "Buddeln", "Blumen"],
+        ["Lärm", "Katzen"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Klaus",
+        6,
+        "assets/klaus.png",
+        ["Pizza", "Fernsehen", "Nickerchen"],
+        ["Sport", "Montage"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Luna",
+        2,
+        "assets/luna.png",
+        ["Beeren", "Klettern", "Musik"],
+        ["Gewitter", "Brokkoli"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Otto",
+        4,
+        "assets/otto.png",
+        ["Hamsterräder", "Käse", "Abenteuer"],
+        ["Stillstehen", "Spinat"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Berta",
+        3,
+        "assets/berta.png",
+        ["Kekse", "Backen", "Tee"],
+        ["Fast Food", "Lärm"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Willi",
+        2,
+        "assets/willi.png",
+        ["Gaming", "Popcorn", "Cola"],
+        ["Früh aufstehen", "Hausaufgaben"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Emma",
+        5,
+        "assets/emma.png",
+        ["Yoga", "Nüsse", "Sonnenuntergänge"],
+        ["Stress", "Kälte"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Rudi",
+        3,
+        "assets/rudi.png",
+        ["Zugfahren", "Bücher", "Schokolade"],
+        ["Mathe", "Schmutz"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
+
+    new Hamster(
+        "Hannelore",
+        4,
+        "assets/hannelore.png",
+        ["Käsekuchen", "Stricken", "Spaziergänge"],
+        ["Hitze", "Mücken"],
+        0,
+        0,
+        Boolean(Math.round(Math.random()))
+    ),
 ];
 
 function update_likes(hamster, likes) {
